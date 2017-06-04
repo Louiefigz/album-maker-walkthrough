@@ -8,8 +8,19 @@ export function recipeFormAddIngredient(ingredientId){
 export function updateIngredient(ingredient){
   return {type: 'UPDATE_INGREDIENT', payload: ingredient}
 }
+export function deleteIngredient(ingredient){
+  debugger 
+  return {type: 'DELETE_INGREDIENT', payload: ingredient}
+}
 
 
 export function findIngredients(ingredients,  recipeId){
-  return  ingredients.filter((item)=> item.recipeId === recipeId.recipeId )
+    debugger
+    if (ingredients.ingredients !== undefined){
+
+      return  ingredients.ingredients.filter((item)=> item.recipeId === recipeId.recipeId )
+    } else {
+      return  ingredients.filter((item)=> item.recipeId === recipeId.recipeId )
+
+    }
 }

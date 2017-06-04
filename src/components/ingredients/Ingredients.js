@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { findIngredients } from "../../actions/ingredients";
-
+import { ConnectedAddIngredient } from './AddIngredient';
 
 
 
@@ -9,6 +9,7 @@ export class Ingredients extends Component {
   constructor(){
     super();
     this.state={
+      ingredients: [],
       recipeId: 0
     }
   }
@@ -21,24 +22,66 @@ export class Ingredients extends Component {
 
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      ingredients: nextProps.ingredients
+    })
+  }
+  // componentWillUpdate(nextProps, nextState){
+  //   debugger
+  //   this.setState({
+  //     ingredients: this.state.ingredients.ingredients.concat([nextProps.ingredients[0]])
+  //   })
+  // }
+  //
+  // shouldComponentUpdate(nextProps, nextState){
+  //   if (nextState.ingredients.ingredients !== undefined){
+  //
+  //     return nextProps.ingredients.length !== nextState.ingredients.ingredients.length ? true : false
+  //   }else {
+  //     return nextProps.ingredients.length !== nextState.ingredients.length ? true : false
+  //
+  //   }
+  // }
 
+  componentDidUpdate(){
+
+  }
+
+  handleClick(e){
+
+  }
 
 
   render(){
-    let ingredients = findIngredients(this.props.ingredients, this.state);
+    let ingredients = findIngredients(this.state.ingredients, this.state);
+    // let ingredient = ingredients.map(function(ingredient){
+    //   return <li key={ingredient.id}>{ingredient.name} </li>
+    // })
+
     let ingredient = ingredients.map(function(ingredient){
-      return <li key={ingredient.id}>{ingredient.name}</li>
+      console.log('working')
+       return <ConnectedAddIngredient key={ingredient.id} ingredient={ingredient.name} id={ingredient.id} />
     })
+
+
     return(
         <div>
           Ingredients
           <ul>
-            {ingredient}
+          {ingredient}
           </ul>
         </div>
     )
   }
 }
+            //
+            // {ingredients.map(ingredient =>
+            //   <li key={ingredient.id}>
+            //     { ingredient.name }
+            //
+            //   </li>
+            // )}
 
 
 export const ConnectedIngredients = connect(mapStateToProps)(Ingredients)

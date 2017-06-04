@@ -61,7 +61,10 @@ export class Ingredients extends Component {
 
     let ingredient = ingredients.map(function(ingredient){
       console.log('working')
-       return <ConnectedAddIngredient key={ingredient.id} ingredient={ingredient.name} id={ingredient.id} />
+       return <ConnectedAddIngredient key={ingredient.id}
+               ingredient={ingredient.name}
+               id={ingredient.id}
+               recipeId= {ingredient.recipeId}/>
     })
 
 

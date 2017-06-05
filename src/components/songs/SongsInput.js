@@ -5,17 +5,17 @@ import { connect } from 'react-redux'
 // and making it available as a prop for this component.
 import { bindActionCreators } from 'redux'
 
-import { createIngredient } from '../../actions/ingredients'
+import { createIngredient } from '../../actions/songs'
 
-export class IngredientsInput extends Component {
+export class songsInput extends Component {
   constructor(props){
     super(props)
-    this.state = {name: '', recipeId: 0}
+    this.state = {name: '', albumId: 0}
   }
 
   componentWillMount(){
     this.setState({
-      recipeId: this.props.recipeId
+      albumId: this.props.albumId
     })
   }
 
@@ -41,7 +41,7 @@ export class IngredientsInput extends Component {
   }
 }
 
-export const ConnectedIngredientsInput = connect(null, mapDispatchToProps)(IngredientsInput)
+export const ConnectedSongsInput = connect(null, mapDispatchToProps)(songsInput)
 
 function mapDispatchToProps(dispatch){
   // include the createIngredient action and bind that action to the dispatch method.

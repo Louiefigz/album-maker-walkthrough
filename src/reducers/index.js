@@ -1,11 +1,15 @@
+
+// combineReducers let's us access all the reducer functions in our reducers folder.
+// This allows us to combine all of them into one place.
+
 import { combineReducers } from 'redux'
 
-import ingredientsReducer from './ingredients'
-import recipesReducer from './recipes'
+import songsReducer from './songs'
+import albumsReducer from './albums'
 
 
 export default combineReducers({
-  ingredients: ingredientsReducer,
-  recipes: recipesReducer,
+  songs: songsReducer,
+  albums: albumsReducer,
 })
 //

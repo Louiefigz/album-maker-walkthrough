@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { deleteIngredient } from '../../actions/ingredients';
-import { updateIngredient } from '../../actions/ingredients';
-// import {ConnectedIngredientsInput} from './IngredientsInput';
+import { deleteSong } from '../../actions/songs';
+import { updateSong } from '../../actions/songs';
+// import {ConnectedSongsInput} from './songsInput';
 //
-export class AddIngredient extends Component {
+export class AddSong extends Component {
   constructor(){
     super();
     this.state ={
       update: false,
       name: '',
       id: 0,
-      recipeId: 0
+      albumId: 0
     }
   }
 
   componentWillMount(){
     this.setState({
       id: this.props.id,
-      recipeId: this.props.recipeId,
+      albumId: this.props.albumId,
     })
   }
   handleClick(event){
     event.preventDefault();
-    this.props.deleteIngredient(this.props)
+    this.props.deleteSong(this.props)
   }
 
   handleUpdate(e){
@@ -44,7 +44,7 @@ export class AddIngredient extends Component {
 
   handleForm(e){
     e.preventDefault();
-    this.props.updateIngredient(this.state);
+    this.props.updateSong(this.state);
     this.setState({
       name: '',
       update: false
@@ -52,17 +52,18 @@ export class AddIngredient extends Component {
   }
 
   render(){
+    debugger
     return(
       this.state.update ?
       <div>
       <form onSubmit={(event)=> this.handleForm(event)}>
-        <input placeholder={this.props.ingredient} value={this.state.name} onChange={(event)=> this.updateName(event)}/>
+        <input placeholder={this.props.name} value={this.state.name} onChange={(event)=> this.updateName(event)}/>
         <input type="submit"/>
         </form>
       </div>
       :
       <div>
-        <li>{this.props.ingredient}</li>
+        <li>{this.props.name}</li>
         <button onClick={ (event)=>this.handleClick(event)}> Delete </button>
         <button onClick={ (event)=>this.handleUpdate(event)}> Update </button>
 
@@ -71,13 +72,13 @@ export class AddIngredient extends Component {
   }
 }
 //
-export const ConnectedAddIngredient = connect(null, mapDispatchToProps)(AddIngredient)
+export const ConnectedAddSong = connect(null, mapDispatchToProps)(AddSong)
 //
 function mapDispatchToProps(dispatch){
   // include the createIngredient action and bind that action to the dispatch method.
   // remember the action is packaging the data for the reducer aka store.
 
   return bindActionCreators({
-    deleteIngredient: deleteIngredient,
-    updateIngredient: updateIngredient}, dispatch)
+    deleteSong: deleteSong,
+    updateSong: updateSong}, dispatch)
 }

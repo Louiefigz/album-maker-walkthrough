@@ -4,8 +4,8 @@ import { Link } from 'react-router'
 export class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Link to="/recipes/new">Create Recipe </Link>
+      <div>
+        <Link to="/albums/new">Create New Album </Link>
       </div>
     );
   }

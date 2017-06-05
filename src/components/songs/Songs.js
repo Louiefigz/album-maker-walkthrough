@@ -44,13 +44,7 @@ export class Songs extends Component {
   //   }
   // }
 
-  componentDidUpdate(){
 
-  }
-
-  handleClick(e){
-
-  }
 
 
   render(){

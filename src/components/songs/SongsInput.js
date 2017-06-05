@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-// We're binding the createIngredient function from action
+// We're binding the createSong function from action
 // and making it available as a prop for this component.
-import { bindActionCreators } from 'redux'
-
-import { createIngredient } from '../../actions/songs'
+import { bindActionCreators } from 'redux';
+import { createSong } from '../../actions/songs';
 
 export class songsInput extends Component {
   constructor(props){
@@ -25,7 +24,7 @@ export class songsInput extends Component {
 
   handleOnSubmit(event){
     event.preventDefault();
-    this.props.createIngredient(this.state);
+    this.props.createSong(this.state);
     this.setState({name:""})
 
   }
@@ -44,7 +43,6 @@ export class songsInput extends Component {
 export const ConnectedSongsInput = connect(null, mapDispatchToProps)(songsInput)
 
 function mapDispatchToProps(dispatch){
-  // include the createIngredient action and bind that action to the dispatch method.
-  // remember the action is packaging the data for the reducer aka store.
-  return bindActionCreators({createIngredient: createIngredient}, dispatch)
+  return bindActionCreators({
+    createSong: createSong}, dispatch)
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { deleteSong } from '../../actions/songs';
-import { updateSong } from '../../actions/songs';
-// import {ConnectedSongsInput} from './songsInput';
-//
+import { connect } from 'react-redux';
+
+import { bindActionCreators } from 'redux';
+import { deleteSong, updateSong } from '../../actions/songs';
+
+
 export class AddSong extends Component {
   constructor(){
     super();
@@ -52,7 +52,6 @@ export class AddSong extends Component {
   }
 
   render(){
-    debugger
     return(
       this.state.update ?
       <div>
@@ -73,11 +72,12 @@ export class AddSong extends Component {
 }
 //
 export const ConnectedAddSong = connect(null, mapDispatchToProps)(AddSong)
-//
-function mapDispatchToProps(dispatch){
-  // include the createIngredient action and bind that action to the dispatch method.
-  // remember the action is packaging the data for the reducer aka store.
 
+
+function mapDispatchToProps(dispatch){
+  // include the createSong action and bind that action to the
+  //dispatch method. Remember the action is packaging
+  //  the data for the reducer aka store.
   return bindActionCreators({
     deleteSong: deleteSong,
     updateSong: updateSong}, dispatch)

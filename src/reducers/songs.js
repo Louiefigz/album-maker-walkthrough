@@ -1,8 +1,5 @@
 // This generated a random number that we are using to give unique
 // a id to every ingredient that we create
-
-// import Recipe from "./albums";
-
 import uuidV4  from 'uuid/v4';
 const initialState = [{songs:[]}]
 
@@ -11,12 +8,10 @@ export default function songs(state = initialState, action){
     case 'CREATE_SONG':
       let song = Object.assign({}, action.payload, {id: uuidV4()})
       if (state[0]!== undefined){
-        debugger
         return Object.assign({}, state[0], {
           songs: state[0].songs.concat([song])
         })
       } else {
-        debugger
         return Object.assign({}, state, {
           songs: state.songs.concat([song])
         })
@@ -43,6 +38,28 @@ export default function songs(state = initialState, action){
       return state;
   }
 }
+//
+//
+// // uuidv4 just makes a random and unique id that we can use for new songs.
+// import uuidV4  from 'uuid/v4';
+// // set initialState to have songs as a key.
+// const initialState = [{songs:[]}]
+// // include the initial state as the argument for State.
+// export default function songs(state = initialState, action){
+//   switch (action.type) {
+//     // Your action method will have 'CREATE_SONG' as the type.
+//     case 'CREATE_SONG':
+//     //below we are contatng a new song as part of state.songs
+//       let song = Object.assign({}, action.payload, {id: uuidV4()})
+//       // We are returning a modified version of that state to include
+//       // the new song.
+//         return Object.assign({}, state, {
+//           songs: state.songs.concat([song])
+//         })
+//         default:
+//         return state
+//       }
+//     }
 
 
 //
